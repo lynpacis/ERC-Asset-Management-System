@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "identityapp1": {
+      "connectionInfo": "App registration: ERC Asset Management System, Tenant: Energy Regulatory Commission (erc.ph - Microsoft Entra ID)",
+      "type": "identityapp.default"
+    }
+  }
+}

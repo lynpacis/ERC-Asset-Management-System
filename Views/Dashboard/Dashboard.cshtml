@@ -1,0 +1,199 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Content Wrapper -->
+<div class="container container-md container-fluid">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Dashboard v2</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard v2</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>150</h3>
+                        <p>New Orders</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>53<sup style="font-size:20px">%</sup></h3>
+                        <p>Bounce Rate</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>44</h3>
+                        <p>User Registrations</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>65</h3>
+                        <p>Unique Visitors</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts row -->
+        <div class="row">
+            <section class="col-lg-6 connectedSortable">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Sales Chart</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="salesChart" style="min-height:250px; height:250px; max-height:250px; width:100%;"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-lg-6 connectedSortable">
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">Visitors Breakdown</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="visitorsChart" style="min-height:250px; height:250px; max-height:250px; width:100%;"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Main row -->
+        <div class="row">
+            <section class="col-lg-7 connectedSortable">
+                <div class="card">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title">Latest Orders</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table m-0">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Item</th>
+                                    <th>Status</th>
+                                    <th>Popularity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#">OR9842</a></td>
+                                    <td>Call of Duty IV</td>
+                                    <td><span class="badge badge-success">Shipped</span></td>
+                                    <td><span class="text-success">90%</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">OR1848</a></td>
+                                    <td>Samsung Smart TV</td>
+                                    <td><span class="badge badge-warning">Pending</span></td>
+                                    <td><span class="text-warning">70%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-lg-5 connectedSortable">
+                <div class="card bg-gradient-primary">
+                    <div class="card-header border-0">
+                        <h3 class="card-title">Visitors Map</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="world-map" style="height:250px; width:100%;"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- AdminLTE App -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+    <script>
+        // Sales Chart (Line)
+        var ctxSales = document.getElementById('salesChart').getContext('2d');
+        var salesChart = new Chart(ctxSales, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    borderColor: 'rgba(60,141,188,0.9)',
+                    backgroundColor: 'rgba(60,141,188,0.5)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Visitors Chart (Doughnut)
+        var ctxVisitors = document.getElementById('visitorsChart').getContext('2d');
+        var visitorsChart = new Chart(ctxVisitors, {
+            type: 'doughnut',
+            data: {
+                labels: ['Chrome', 'IE', 'FireFox', 'Safari', 'Opera'],
+                datasets: [{
+                    data: [700, 500, 400, 600, 300],
+                    backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+}

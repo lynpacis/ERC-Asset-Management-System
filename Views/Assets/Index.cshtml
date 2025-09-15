@@ -2,8 +2,15 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="table-container" class="container container-md container-fluid p-3">
-    <h5 style="color: #263fc9; font-weight: bold;">SUPPLIES</h5>
+<div id="table-container" class="container-fluid p-3">
+    <h5 style="color: #263fc9; font-weight: bold;">Information Communications Technology Equipment</h5>
+    <br />
+    <h6 class="table-title" style="">Report on the Physical Count of Property Plant and Equipment</h6>
+    <h6 class="table-title" style="">Account Code 10605030 Information Communications Technology Equipment</h6>
+    <h6 class="table-title" style="">As of December 2024</h6>
+    <br />
+    <p style="font-size: 12px;">Fund Cluster: Regular Agency Fund<br />
+    For which Cherry Lynn S. Gonzalez, Administrative Officer V, Energy Regulatory Commission, is accountable having assumed such accountability on August 2018</p>
     <div class="card p-3">
         <div>
             <a href="#" class="btn btn-primary btn-sm" style="width: 56px;">Add</a>
@@ -11,15 +18,22 @@
         <table id="assetTable" class="table table-bordered table-striped">
             <thead>
                 <tr style="background: lightblue;">
-                    <th>No.</th>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
-                    <th>Column 3</th>
-                    <th>Column 4</th>
-                    <th>Column 5</th>
-                    <th>Column 6</th>
-                    <th>Column 7</th>
-                    <th>Column 8</th>
+                    <th rowspan ="2">Article</th>
+                    <th rowspan="2">Description</th>
+                    <th rowspan="2">Property Number (OLD)</th>
+                    <th rowspan="2">Property Number (NEW)</th>
+                    <th rowspan="2">Unit</th>
+                    <th rowspan="2">Unit Value</th>
+                    <th rowspan="2">Date Acquired</th>
+                    <th colspan="2" style="text-align: center;">Quantity</th>
+                    <th colspan="2" style="text-align: center;">Shortage/Overage</th>
+                    <th rowspan="2">Remarks</th>
+                </tr>
+                <tr style="background: lightblue;">
+                    <th>Per Property Card</th>
+                    <th>Per Physical Card</th>
+                    <th>Quantity</th>
+                    <th>Value</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,14 +47,6 @@
                     <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
-                </tr>
-                <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
@@ -55,8 +61,28 @@
                     <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
                 </tr>
                 <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                </tr>
+                <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
@@ -74,6 +100,11 @@
 
 @section Scripts{
     <script>
-        new DataTable('#assetTable');
+        new DataTable('#assetTable',{
+            scrollY: '300px',   // vertical scroll height
+            scrollX: true,      // enable horizontal scroll if needed
+            scrollCollapse: true, // table height shrinks if fewer rows
+            paging: true       
+        });
     </script>
 }
